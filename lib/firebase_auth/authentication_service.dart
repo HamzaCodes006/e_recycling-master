@@ -24,6 +24,12 @@ class AuthenticationService  {
 
   /// Changed to idTokenChanges as it updates depending on more cases.
   Stream<User?> get authStateChanges => _firebaseAuth.idTokenChanges();
+  final snackBar = SnackBar(
+    content: Text('No User Found'),
+  );
+  final snackBar2 = SnackBar(
+    content: Text('User already created cannot register'),
+  );
 
 
   /// This won't pop routes so you could do something like
@@ -63,7 +69,9 @@ class AuthenticationService  {
       return "Signed in";
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');}
+        print('No user found for that email.');
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Login()),
@@ -97,6 +105,7 @@ class AuthenticationService  {
       return "Signed up";
 
     } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar2);
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Register()),

@@ -57,6 +57,7 @@ dependencies:
   google_ml_vision: ^0.0.7
   introduction_screen: ^3.0.2
   firebase_messaging: ^11.4.0
+  firebase_admin_sdk: ^0.0.1
 
 
 dev_dependencies:

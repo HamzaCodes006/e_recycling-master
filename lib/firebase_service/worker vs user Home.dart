@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 
+import '../Admin/delete_worker.dart';
+
 
 class WorkerVsUserHomeScreen extends StatelessWidget {
 
@@ -41,6 +43,13 @@ class WorkerVsUserHomeScreen extends StatelessWidget {
                 //   MaterialPageRoute(builder: (context) => WorkerHomePage()),
                 // );
                 return WorkerHomePage();
+              }
+              if (snapshot.data!['Role'] == 'admin') {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => WorkerHomePage()),
+                // );
+                return ShowWorkers();
               }
               return Text("Good");
           }
